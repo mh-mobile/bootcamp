@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2020_08_09_022128) do
+=======
+ActiveRecord::Schema.define(version: 2020_06_20_060307) do
+>>>>>>> 609f6070... 卒業制作かどうかのチェック項目を追加
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -419,6 +423,7 @@ ActiveRecord::Schema.define(version: 2020_08_09_022128) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "graduation_work", default: false, null: false
     t.index ["user_id"], name: "index_works_on_user_id"
   end
 
