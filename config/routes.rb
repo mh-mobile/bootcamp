@@ -24,11 +24,12 @@ Rails.application.routes.draw do
     resources :checks, only: %i(index create destroy)
     resources :users, only: %i(index show)
     resources :reservations, only: %i(index create destroy)
-    resources :practices, only: [] do
+    resources :practices, only: %i(index) do
       resource :learning, only: %i(show update), controller: "practices/learning"
     end
     resources :watches, only: %i(index create destroy)
     resources :memos, only: %i(create update destroy)
+    resources :questions, only: %i(index show update destroy)
   end
 
   namespace :admin do
