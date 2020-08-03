@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 2020_08_09_022128) do
-=======
-ActiveRecord::Schema.define(version: 2020_06_20_060307) do
->>>>>>> 609f6070... 卒業制作かどうかのチェック項目を追加
+ActiveRecord::Schema.define(version: 2020_08_02_011103) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
