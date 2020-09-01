@@ -7,7 +7,7 @@ class PracticesController < ApplicationController
   before_action :set_practice, only: %w(show edit update destroy sort)
 
   def show
-    @category = @practice.category
+    @categories = @practice.categories
   end
 
   def new
@@ -50,12 +50,12 @@ class PracticesController < ApplicationController
         :title,
         :description,
         :goal,
-        :category_id,
         :position,
         :submission,
         :open_product,
         :include_progress,
-        :memo
+        :memo,
+        category_ids: []
       )
     end
 

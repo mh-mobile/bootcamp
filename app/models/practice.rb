@@ -23,9 +23,11 @@ class Practice < ApplicationRecord
     source: :user
   has_many :products
   has_many :questions
-  belongs_to :category
-  acts_as_list scope: :category
+  # belongs_to :category
+  # acts_as_list scope: :category
   has_one :learning_minute_statistic
+
+  has_and_belongs_to_many :categories, dependent: :destroy
 
   validates :title, presence: true
   validates :description, presence: true

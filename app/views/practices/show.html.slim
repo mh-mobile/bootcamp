@@ -12,9 +12,6 @@ header.page-header
               = link_to new_practice_path, class: "a-button is-md is-warning is-block" do
                 i.fas.fa-plus
                 | プラクティス作成
-          li.page-header-actions__item
-            = link_to course_practices_path(current_user.course, anchor: "category-#{@practice.category.id}"), class: "a-button is-md is-secondary is-block" do
-              | プラクティス一覧
 
 = render "page_tabs", resource: @practice
 
@@ -22,9 +19,14 @@ header.page-header
   .container
     .practice-contents
       .practice-contents__inner
+        h1 カテゴリー
+
+        ul
+          - @practice.categories.each do |category|
+            li = category.name
+
         header.practice-contents__header#learning-status
-          h1.practice-contents__title
-            = @practice.title
+          h1.practice-contents__title = @practice.title
         - status = @practice.status_by_learnings(current_user.learnings)
         .js-learning-status(data-practice-id="#{@practice.id}" data-status="#{status}" data-submission="#{@practice.submission}")
 
@@ -89,17 +91,6 @@ header.page-header
                     = link_to edit_practice_path(@practice), class: "a-button is-md is-primary is-block" do
                       i.fas.fa-pen
                       | 編集
-
-      nav.page-nav
-        header.page-nav__header
-          h2.page-nav__title
-            = link_to course_practices_path(current_user.course, anchor: "category-#{@category.id}"), class: "page-nav__title-link" do
-              = @category.name
-        ul.page-nav__items
-          - @category.practices.each do |practice|
-            li.page-nav__item
-              = link_to practice.title, practice_path(practice), class: "page-nav__item-link #{@practice == practice ? "is-current" : ""}"
-
 .sticky-message
   p
     | 困ったときは、質問・雑談ルームを利用しよう！
