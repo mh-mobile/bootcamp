@@ -7,12 +7,6 @@
         = l user.created_at.to_date
         | &nbsp;#{user.elapsed_days}日目
         | &nbsp;#{user.generation}期生
-    - if current_user.mentor?
-      .user-metas__item
-        .user-metas__item-label
-          = User.human_attribute_name :updated_at
-        .user-metas__item-value(class="#{"is-important" unless user.active?}")
-          = l user.updated_at
     .user-metas__item
       .user-metas__item-label
         | 都道府県
