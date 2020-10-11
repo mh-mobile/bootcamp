@@ -1,0 +1,29 @@
+{
+  "name": "Ruby 2.7 & PostgreSQL",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
+  "workspaceFolder": "/workspace",
+  "remoteUser": "vscode",
+  // Set *default* container specific settings.json values on container create.
+  "settings": { 
+    "terminal.integrated.shell.linux": "/bin/bash",
+    "sqltools.connections": [{
+      "name": "Container database",
+      "driver": "PostgreSQL",
+      "previewLimit": 50,
+      "server": "localhost",
+      "port": 5432,
+      "database": "bootcamp_development",
+      "username": "vscode",
+      "password": ""
+    }]
+  },
+
+  // Add the IDs of extensions you want installed when the container is created.
+  "extensions": [
+    "rebornix.Ruby",
+    "mtxr.sqltools",
+    "mtxr.sqltools-driver-pg"
+  ],
+
+}
