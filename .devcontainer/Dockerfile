@@ -7,6 +7,9 @@ FROM mcr.microsoft.com/vscode/devcontainers/ruby:${VARIANT}
 # [Option] Install Node.js
 ARG INSTALL_NODE="true"
 ARG NODE_VERSION="lts/*"
+
+RUN apt update
+RUN sudo apt -y install imagemagick
 RUN if [ "${INSTALL_NODE}" = "true" ]; then su vscode -c "source /usr/local/share/nvm/nvm.sh && nvm install ${NODE_VERSION} 2>&1"; fi
 
 # [Optional] Uncomment this section to install additional OS packages.
