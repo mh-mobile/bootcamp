@@ -6,16 +6,15 @@ services:
       context: ..
       dockerfile: .devcontainer/Dockerfile
       args:
-        VARIANT: 2.6
-        # [Choice] Install Node.js
-        INSTALL_NODE: "true"
-        NODE_VERSION: "lts/*"
+        VARIANT: 2.6.5
         # On Linux, you may need to update USER_UID and USER_GID below if not your local UID is not 1000.
         USER_UID: 1000
         USER_GID: 1000
 
     volumes:
       - ..:/workspace:cached
+    ports:
+      - 4000:3000
       
     # Overrides default command so things don't shut down after the process ends.
     command: sleep infinity

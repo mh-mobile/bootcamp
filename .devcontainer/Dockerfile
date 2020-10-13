@@ -1,23 +1,46 @@
-# See here for image contents: https://github.com/microsoft/vscode-dev-containers/tree/v0.140.1/containers/ruby/.devcontainer/base.Dockerfile
-
-# [Choice] Ruby version: 2, 2.7, 2.6, 2.5
 ARG VARIANT="2"
-FROM mcr.microsoft.com/vscode/devcontainers/ruby:${VARIANT}
+FROM ruby:${VARIANT}-alpine
 
-# [Option] Install Node.js
-ARG INSTALL_NODE="true"
-ARG NODE_VERSION="lts/*"
+ARG USER_UID="1000"
+ARG USER_GID="1000"
 
-RUN apt-get update
-RUN sudo apt-get -y install imagemagick
-RUN if [ "${INSTALL_NODE}" = "true" ]; then su vscode -c "source /usr/local/share/nvm/nvm.sh && nvm install ${NODE_VERSION} 2>&1"; fi
+RUN echo "root:root" | chpasswd
+RUN addgroup -g $USER_GID vscode
 
-# [Optional] Uncomment this section to install additional OS packages.
-# RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
-#     && apt-get -y install --no-install-recommends <your-package-list-here>
+RUN adduser -S -u $USER_UID -G vscode vscode \
+    && echo "vscode ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers \
+    && echo "vscode:vscode" | chpasswd
 
-# [Optional] Uncomment this line to install additional gems.
-# RUN gem install <your-gem-names-here>
+RUN echo "Set disable_coredump false" >> /etc/sudo.conf
 
-# [Optional] Uncomment this line to install global node packages.
-# RUN su vscode -c "source /usr/local/share/nvm/nvm.sh && npm install -g <your-package-here>" 2>&1
+RUN apk add sudo
+
+RUN gem update --system
+RUN gem install --no-document --force bundler -v 2.1.4
+
+RUN apk update && \
+    apk upgrade && \
+    apk add --no-cache \
+        gcc \
+        g++ \
+        libc-dev \
+        libxml2-dev \
+        linux-headers \
+        make \
+        git \
+        vim \
+        nodejs \
+        postgresql \
+        postgresql-dev \
+        tzdata \
+        yarn && \
+    apk add --virtual build-packs --no-cache \
+        build-base \
+        curl-dev
+
+        
+
+# ImageMagick
+RUN apk add --no-cache imagemagick bash pngcrush optipng=0.7.7-r0 ghostscript-fonts
+
+WORKDIR /workspace
