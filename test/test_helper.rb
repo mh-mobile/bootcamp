@@ -8,7 +8,7 @@ require "webmock/minitest"
 require "supports/stub_helper"
 
 WebMock.allow_net_connect!
-Webdrivers.cache_time = 86_400
+#Webdrivers.cache_time = 86_400
 
 class ActiveSupport::TestCase
   # Run tests in parallel with specified workers
