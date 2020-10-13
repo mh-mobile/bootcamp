@@ -15,7 +15,7 @@
       "port": 5432,
       "database": "bootcamp_development",
       "username": "vscode",
-      "password": ""
+      "password": "postgres"
     }]
   },
 

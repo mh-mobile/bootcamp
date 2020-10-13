@@ -41,8 +41,8 @@ services:
       - 5000:5432
     environment:
       POSTGRES_USER: vscode
+      POSTGRES_PASSWORD: postgres
       POSTGRES_DB: bootcamp_development
-      POSTGRES_HOST_AUTH_METHOD: trust
 
 volumes:
   postgres-data:
