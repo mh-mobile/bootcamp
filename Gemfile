@@ -14,7 +14,7 @@ gem "bootsnap", ">= 1.4.2", require: false
 gem "image_processing", "~> 1.2"
 
 # not default
-gem "pg"
+gem "mysql2"
 gem "coffee-rails", "~> 5.0.0"
 gem "slim-rails"
 gem "jquery-rails"

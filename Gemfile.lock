@@ -212,6 +212,7 @@ GEM
     multi_json (1.15.0)
     multi_xml (0.6.0)
     multipart-post (2.1.1)
+    mysql2 (0.5.3)
     necromancer (0.6.0)
     net-http-persistent (3.1.0)
       connection_pool (~> 2.2)
@@ -241,7 +242,6 @@ GEM
     pastel (0.7.4)
       equatable (~> 0.6)
       tty-color (~> 0.5)
-    pg (1.2.3)
     polyamorous (2.3.2)
       activerecord (>= 5.2.1)
     postmark (1.21.1)
@@ -479,10 +479,10 @@ DEPENDENCIES
   listen (~> 3.2)
   mentionable (~> 0.2)
   meta-tags
+  mysql2
   oauth2
   omniauth
   omniauth-github
-  pg
   postmark-rails
   pry-byebug
   puma (~> 4.3)
